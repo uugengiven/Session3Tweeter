@@ -23,6 +23,10 @@
 <ul>
     @foreach (var tweet in Model.Tweets)
     {
+        if (tweet.visible)
+        {
         <li>@tweet.Text - @tweet.Date <a href="/Tweets/Delete/@tweet.ID">Delete</a></li>
+        }
     }
 </ul>
+<a href="/Tweets/UndeleteAll/@Model.ID" class="btn btn-primary">Undelete Tweets</a>

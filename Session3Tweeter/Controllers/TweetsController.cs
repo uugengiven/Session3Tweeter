@@ -25,6 +25,7 @@ namespace Session3Tweeter.Controllers
             Tweet tempTweet = new Tweet();
             tempTweet.Text = Text;
             tempTweet.Date = DateTime.Now;
+            tempTweet.visible = true;
             TweetUser tempUser = db.TweetUsers.Find(userID);
             tempTweet.TweetUser = tempUser;
 
@@ -33,11 +34,27 @@ namespace Session3Tweeter.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        public ActionResult UndeleteAll(int id)
+        {
+            TweetDbContext db = new TweetDbContext();
+            // TweetUser currentUser
+            var currentUser = db.TweetUsers.Find(id);
+            // List<Tweet> userTweets
+            var userTweets = currentUser.Tweets.Where(x => x.visible == false).ToList();
+
+            foreach(Tweet tweet in userTweets)
+            {
+                tweet.visible = true;
+            }
+            db.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
         public ActionResult Delete(int id)
         {
             TweetDbContext db = new TweetDbContext();
             var tweet = db.Tweets.Find(id);
-            db.Tweets.Remove(tweet);
+            tweet.visible = false;
             db.SaveChanges();
             return Redirect(Request.UrlReferrer.ToString());
         }
