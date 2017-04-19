@@ -1,0 +1,14 @@
+﻿@model ICollection<Session3Tweeter.Models.Tweet>
+@{
+    ViewBag.Title = "ThePeopleImFollowing";
+}
+
+<h2>ThePeopleImFollowing</h2>
+
+<ul>
+    @foreach (var tweet in Model)
+    {
+        <li>@tweet.Text - @tweet.Date - By @tweet.TweetUser.Name</li>
+    }
+</ul>
+

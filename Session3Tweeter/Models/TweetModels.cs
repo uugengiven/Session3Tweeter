@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Session3Tweeter.Models
 {
@@ -15,6 +16,7 @@ namespace Session3Tweeter.Models
         public string ProfilePic { get; set; }
 
         public virtual ICollection<Tweet> Tweets { get; set; }
+
     }
 
     public class Tweet
@@ -26,6 +28,15 @@ namespace Session3Tweeter.Models
         public DateTime Date { get; set; }
 
         public virtual TweetUser TweetUser { get; set; }
+
+    }
+
+    public class Follower
+    {
+        public int id { get; set; }
+
+        public virtual TweetUser TweetUser { get; set; }
+        public virtual TweetUser Followee { get; set; }
     }
 
     // Database
@@ -34,5 +45,8 @@ namespace Session3Tweeter.Models
         // Tables
         public DbSet<TweetUser> TweetUsers { get; set; }
         public DbSet<Tweet> Tweets { get; set; }
+        public DbSet<Follower> Followers { get; set; }
     }
+
+
 }
