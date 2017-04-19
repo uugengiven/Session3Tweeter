@@ -129,12 +129,26 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TweetsController.cs" />
     <Compile Include="Controllers\TweetUsersController.cs" />
     <Compile Include="Controllers\TweetzorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704191510213_InitialCreate.cs" />
+    <Compile Include="Migrations\201704191510213_InitialCreate.Designer.cs">
+      <DependentUpon>201704191510213_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704191815019_AddLimitToTextSize.cs" />
+    <Compile Include="Migrations\201704191815019_AddLimitToTextSize.Designer.cs">
+      <DependentUpon>201704191815019_AddLimitToTextSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704191859376_TweetVisibleBool.cs" />
+    <Compile Include="Migrations\201704191859376_TweetVisibleBool.Designer.cs">
+      <DependentUpon>201704191859376_TweetVisibleBool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TweetModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -175,6 +189,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\TweetUsers\Index.cshtml" />
     <Content Include="Views\Tweets\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -186,6 +201,17 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704191510213_InitialCreate.resx">
+      <DependentUpon>201704191510213_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704191815019_AddLimitToTextSize.resx">
+      <DependentUpon>201704191815019_AddLimitToTextSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704191859376_TweetVisibleBool.resx">
+      <DependentUpon>201704191859376_TweetVisibleBool.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

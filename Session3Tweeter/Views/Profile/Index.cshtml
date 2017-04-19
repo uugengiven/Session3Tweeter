@@ -1,0 +1,28 @@
+﻿@model Session3Tweeter.Models.TweetUser
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>@Model.Name</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img width="100px" class="img-circle" src="@Model.ProfilePic" />
+        </div>
+        <div class="col-md-4">
+            <form action="/Tweets/AddTweet" method="get">
+                <input type="text" name="Text"/>
+                <input type="hidden" name="userID" value="@Model.ID"/>
+                <input type="submit" value="Post Tweet" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<h2>Tweets!</h2>
+<ul>
+    @foreach (var tweet in Model.Tweets)
+    {
+        <li>@tweet.Text - @tweet.Date <a href="/Tweets/Delete/@tweet.ID">Delete</a></li>
+    }
+</ul>

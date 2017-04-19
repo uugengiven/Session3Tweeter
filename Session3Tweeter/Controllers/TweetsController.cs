@@ -30,7 +30,16 @@ namespace Session3Tweeter.Controllers
 
             db.Tweets.Add(tempTweet);
             db.SaveChanges();
-            return Redirect("/Tweets");
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+        public ActionResult Delete(int id)
+        {
+            TweetDbContext db = new TweetDbContext();
+            var tweet = db.Tweets.Find(id);
+            db.Tweets.Remove(tweet);
+            db.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

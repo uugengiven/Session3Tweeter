@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Session3Tweeter.Models
 {
@@ -19,7 +20,9 @@ namespace Session3Tweeter.Models
     public class Tweet
     {
         public int ID { get; set; }
+        [StringLength(140)]
         public string Text { get; set; }
+        public bool visible { get; set; }
         public DateTime Date { get; set; }
 
         public virtual TweetUser TweetUser { get; set; }
