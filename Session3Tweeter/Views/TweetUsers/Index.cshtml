@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Tweeter Users";
+}
+
+<h2>Index</h2>
+
+<h3>List of users:</h3>
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@user.ID - @user.Name [See Tweets] [Make Tweet]</li>
+    }
+</ul>
+<form method="POST" action="/TweetUsers/AddUser">
+    <input type="text" name="Name" />
+    <input type="text" name="Picture" />
+    <input type="submit" />
+</form>

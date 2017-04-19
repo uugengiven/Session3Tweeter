@@ -1,0 +1,25 @@
+﻿@model ICollection<Session3Tweeter.Models.Tweet>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>I should show tweets some day</h2>
+
+<ul>
+    @foreach (var tweet in Model)
+    {
+        <li>@tweet.Text - @tweet.Date - by @tweet.TweetUser.Name</li>
+    }
+</ul>
+
+<h2>Add Tweet!</h2>
+<form method="get" action="/Tweets/AddTweet">
+    <select name="userID">
+        @foreach (var TweetUser in ViewBag.ListOfUsers)
+        {
+            <option value="@TweetUser.ID">@TweetUser.Name</option>
+        }
+    </select>
+    <input type="text" name="Text" />
+    <input type="submit" />
+</form>
